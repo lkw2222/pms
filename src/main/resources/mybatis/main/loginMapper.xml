@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.kepco.pms.main.login.mapper.LoginMapper">
+
+    <!-- 로그인 정보 조회 -->
+    <select id="selectLoginInfo" resultType="resultMap" parameterType="loginVO">
+        /* kr.co.kepco.pms.main.login.mapper.LoginMapper.selectLoginInfo */
+        SELECT user_id as id
+             , user_password as password
+          FROM TB_SAMPLE_USER
+         WHERE user_id = #{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="false"></setting>
+        <setting name="jdbcTypeForNull" value="NULL"></setting>
+    </settings>
+    <typeAliases>
+
+        <!-- 공통 -->
+        <typeAlias alias="resultMap" type="kr.co.kepco.pms.common.ResultMap"/>
+
+        <typeAlias alias="loginVO" type="kr.co.kepco.pms.main.login.vo.LoginVO"/>
+        <typeAlias alias="sampleVO" type="kr.co.kepco.pms.main.sample.vo.SampleVO"/>
+
+    </typeAliases>
+</configuration>
