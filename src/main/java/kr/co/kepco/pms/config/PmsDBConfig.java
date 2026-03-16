@@ -34,7 +34,7 @@ public class PmsDBConfig {
     @Value("${spring.pms.datasource.mapper-locations}")
     private String mapperLocation;
 
-    @Value("spring.common.datasource.mybatis-config")
+    @Value("${spring.common.datasource.mybatis-config}")
     private String configPath;
 
     @Bean(name="pmsDatasource")
@@ -47,7 +47,10 @@ public class PmsDBConfig {
     public SqlSessionFactory pmsSqlSessionFactory(@Qualifier("pmsDatasource") DataSource pmsDatasource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(pmsDatasource);
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResource(mapperLocation));
+
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = resolver.getResources(mapperLocation);
+        sqlSessionFactoryBean.setMapperLocations(resources);
 
         Resource configLocation = new PathMatchingResourcePatternResolver().getResource(configPath);
         sqlSessionFactoryBean.setConfigLocation(configLocation);
